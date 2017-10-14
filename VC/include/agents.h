@@ -7787,7 +7787,7 @@ public:
 
     /// <summary>
     ///     Constructs a _Order_node_base within the default scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /**/
     _Order_node_base() :
@@ -8008,7 +8008,7 @@ class _Reserving_node: public _Order_node_base<_Type>
 public:
     /// <summary>
     ///     Constructs a _Reserving_node within the default scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PSource">
     ///     The source of data passed into the node
@@ -8030,7 +8030,7 @@ public:
 
     /// <summary>
     ///     Constructs a _Reserving_node within the default scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PSource">
     ///     The source of data passed into the node
@@ -8056,7 +8056,7 @@ public:
 
     /// <summary>
     ///     Constructs a _Reserving_node within the specified scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PScheduler">
     ///     A reference to a scheduler instance.
@@ -8081,7 +8081,7 @@ public:
 
     /// <summary>
     ///     Constructs a _Reserving_node within the specified scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PScheduler">
     ///     A reference to a scheduler instance.
@@ -8387,7 +8387,7 @@ class _Greedy_node: public _Order_node_base<_Type>
 public:
     /// <summary>
     ///     Constructs a _Greedy_node within the default scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PSource">
     ///     The source of data passed into the node
@@ -8408,7 +8408,7 @@ public:
 
     /// <summary>
     ///     Constructs a _Greedy_node within the default scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PSource">
     ///     The source of data passed into the node
@@ -8433,7 +8433,7 @@ public:
 
     /// <summary>
     ///     Constructs a _Greedy_node within the specified scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PScheduler">
     ///     A reference to a scheduler instance.
@@ -8457,7 +8457,7 @@ public:
 
     /// <summary>
     ///     Constructs a _Greedy_node within the specified scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PScheduler">
     ///     A reference to a scheduler instance.
@@ -8772,7 +8772,7 @@ class _Non_greedy_node: public _Order_node_base<_Type>
 public:
     /// <summary>
     ///     Constructs a _Non_greedy_node within the default scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PSource">
     ///     The source of data passed into the node
@@ -8794,7 +8794,7 @@ public:
 
     /// <summary>
     ///     Constructs a _Non_greedy_node within the default scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PSource">
     ///     The source of data passed into the node
@@ -8820,7 +8820,7 @@ public:
 
     /// <summary>
     ///     Constructs a _Non_greedy_node within the specified scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PScheduler">
     ///     A reference to a scheduler instance.
@@ -8845,7 +8845,7 @@ public:
 
     /// <summary>
     ///     Constructs a _Non_greedy_node within the specified scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PScheduler">
     ///     A reference to a scheduler instance.
@@ -11521,7 +11521,7 @@ public:
 
     /// <summary>
     ///     Constructs a join within the default scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /**/
     _Join_node() : _M_counter(std::tr1::tuple_size<_Destination_type>::value)
@@ -11531,7 +11531,7 @@ public:
 
     /// <summary>
     ///     Constructs a join within the specified scheduler, and places it on any schedule
-    ///     group of the scheduler’s choosing.
+    ///     group of the scheduler's choosing.
     /// </summary>
     /// <param name="_PScheduler">
     ///     A reference to a scheduler instance.

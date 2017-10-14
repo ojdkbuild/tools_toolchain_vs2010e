@@ -1069,6 +1069,73 @@ extern __m256  __cdecl _mm256_castps128_ps256(__m128 a);
 extern __m256d __cdecl _mm256_castpd128_pd256(__m128d a);
 extern __m256i __cdecl _mm256_castsi128_si256(__m128i a);
 
+/* Start of new intrinsics for Dev10 SP1
+ *
+ * The list of extended control registers.
+ * Currently, the list includes only one register.
+ */
+#define _XCR_XFEATURE_ENABLED_MASK 0
+ 
+/* Returns the content of the specified extended control register */
+extern unsigned __int64 __cdecl _xgetbv(unsigned int ext_ctrl_reg);
+ 
+/* Writes the value to the specified extended control register */
+extern void __cdecl _xsetbv(unsigned int ext_ctrl_reg, unsigned __int64 val);
+ 
+ 
+/* 
+ * Performs a full or partial save of the enabled processor state components
+ * using the the specified memory address location and a mask.
+ */
+extern void __cdecl _xsave(void *mem, unsigned __int64 save_mask);
+#if defined(_M_X64)
+extern void __cdecl _xsave64(void *mem, unsigned __int64 save_mask);
+#endif
+
+/* 
+ * Performs a full or partial save of the enabled processor state components
+ * using the the specified memory address location and a mask.
+ * Optimize the state save operation if possible.
+ */
+extern void __cdecl _xsaveopt(void *mem, unsigned __int64 save_mask);
+#if defined(_M_X64)
+extern void __cdecl _xsaveopt64(void *mem, unsigned __int64 save_mask);
+#endif
+ 
+/* 
+ * Performs a full or partial restore of the enabled processor states
+ * using the state information stored in the specified memory address location
+ * and a mask.
+ */
+extern void __cdecl _xrstor(void *mem, unsigned __int64 restore_mask);
+#if defined(_M_X64)
+extern void __cdecl _xrstor64(void *mem, unsigned __int64 restore_mask);
+#endif
+ 
+/* 
+ * Saves the current state of the x87 FPU, MMX technology, XMM,
+ * and MXCSR registers to the specified 512-byte memory location.
+ */
+extern void __cdecl _fxsave(void *mem);
+#if defined(_M_X64)
+extern void __cdecl _fxsave64(void *mem);
+#endif
+ 
+/* 
+ * Restore the current state of the x87 FPU, MMX technology, XMM,
+ * and MXCSR registers from the specified 512-byte memory location.
+ */
+extern void __cdecl _fxrstor(void *mem);
+#if defined(_M_X64)
+extern void __cdecl _fxrstor64(void *mem);
+#endif
+
+/* 
+ * End of new intrinsics for Dev10 SP1
+ */
+
+
+
 #if defined __cplusplus
 }; /* End "C" */
 #endif /* __cplusplus */

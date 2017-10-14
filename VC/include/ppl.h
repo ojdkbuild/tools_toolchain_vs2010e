@@ -2052,7 +2052,7 @@ void parallel_for(_Index_type _First, _Index_type _Last, const _Function& _Func)
     parallel_for(_First, _Last, _Index_type(1), _Func);
 }
 
-// parallel_for_each -- This function will iterate over all elements in the iterator’s range.
+// parallel_for_each -- This function will iterate over all elements in the iterator's range.
 
 // Closure (binding) classes for invoking parallel_for_each recursively
 
@@ -2096,7 +2096,7 @@ public:
 private:
 
     const _Function& _M_function;
-    _Value_type *    _M_element[_Size];
+    typename std::iterator_traits<_Forward_iterator>::pointer    _M_element[_Size];
     unsigned int     _M_len;
 
     _Parallel_for_each_helper const & operator=(_Parallel_for_each_helper const&);    // no assignment operator

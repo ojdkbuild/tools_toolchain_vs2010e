@@ -3,7 +3,7 @@
 *
 * Copyright (c) Microsoft Corporation.  All rights reserved.
 * Microsoft would like to acknowledge that this concurrency data structure implementation
-* is based on Intel’s implementation in its Threading Building Blocks ("Intel Material").
+* is based on Intel's implementation in its Threading Building Blocks ("Intel Material").
 * 
 * ==--==
 * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
@@ -81,7 +81,7 @@ namespace details
         // Data fields
 
         // allocator function pointer
-        void* (*_My_vector_allocator_ptr)(_Concurrent_vector_base_v4 &, size_t);
+        void* ( __cdecl * _My_vector_allocator_ptr)(_Concurrent_vector_base_v4 &, size_t);
 
         // embedded storage of segment pointers
         _Segment_t _My_storage[_Pointers_per_short_table];
@@ -118,10 +118,10 @@ namespace details
         }
 
         // An operation on an n-element array starting at begin.
-        typedef void (*_My_internal_array_op1)(void* _Begin, _Size_type _N );
+        typedef void (__cdecl *_My_internal_array_op1)(void* _Begin, _Size_type _N );
 
         // An operation on n-element destination array and n-element source array.
-        typedef void (*_My_internal_array_op2)(void* _Dst, const void* _Src, _Size_type _N );
+        typedef void (__cdecl *_My_internal_array_op2)(void* _Dst, const void* _Src, _Size_type _N );
 
         // Internal structure for shrink_to_fit()
         struct _Internal_segments_table
@@ -1342,7 +1342,7 @@ public:
     const ::Concurrency::details::_Concurrent_vector_base_v4 &_Internal_vector_base() const { return *this; }
 private:
     // Allocate _K items
-    static void *_Internal_allocator(::Concurrency::details::_Concurrent_vector_base_v4 &_Vb, size_t _K) 
+    static void * __cdecl _Internal_allocator(::Concurrency::details::_Concurrent_vector_base_v4 &_Vb, size_t _K) 
     {
         return static_cast<concurrent_vector<_Ty, _Ax>&>(_Vb)._My_allocator.allocate(_K);
     }
@@ -1377,19 +1377,19 @@ private:
     void internal_assign_iterators(_I _First, _I _Last);
 
     // Construct _N instances of _Ty, starting at "begin".
-    static void _Initialize_array( void* _Begin, const void*, size_type _N );
+    static void __cdecl _Initialize_array( void* _Begin, const void*, size_type _N );
 
     // Construct _N instances of _Ty, starting at "begin".
-    static void _Initialize_array_by( void* _Begin, const void* _Src, size_type _N );
+    static void __cdecl _Initialize_array_by( void* _Begin, const void* _Src, size_type _N );
 
     // Construct _N instances of _Ty, starting at "begin".
-    static void _Copy_array( void* _Dst, const void* _Src, size_type _N );
+    static void __cdecl _Copy_array( void* _Dst, const void* _Src, size_type _N );
 
     // Assign _N instances of _Ty, starting at "begin".
-    static void _Assign_array( void* _Dst, const void* _Src, size_type _N );
+    static void __cdecl _Assign_array( void* _Dst, const void* _Src, size_type _N );
 
     // Destroy _N instances of _Ty, starting at "begin".
-    static void _Destroy_array( void* _Begin, size_type _N );
+    static void __cdecl _Destroy_array( void* _Begin, size_type _N );
 
     // Exception-aware helper class for filling a segment by exception-danger operators of user class
     class _Internal_loop_guide
@@ -1571,30 +1571,30 @@ void concurrent_vector<_Ty, _Ax>::internal_assign_iterators(_I _First, _I _Last)
 }
 
 template<typename _Ty, class _Ax>
-void concurrent_vector<_Ty, _Ax>::_Initialize_array( void* _Begin, const void *, size_type _N )
+void __cdecl concurrent_vector<_Ty, _Ax>::_Initialize_array( void* _Begin, const void *, size_type _N )
 {
     _Internal_loop_guide _Loop(_N, _Begin); _Loop._Init();
 }
 
 template<typename _Ty, class _Ax>
-void concurrent_vector<_Ty, _Ax>::_Initialize_array_by( void* _Begin, const void *_Src, size_type _N )
+void __cdecl concurrent_vector<_Ty, _Ax>::_Initialize_array_by( void* _Begin, const void *_Src, size_type _N )
 {
     _Internal_loop_guide _Loop(_N, _Begin); _Loop._Init(_Src);
 }
 
 template<typename _Ty, class _Ax>
-void concurrent_vector<_Ty, _Ax>::_Copy_array( void* _Dst, const void* _Src, size_type _N ) {
+void __cdecl concurrent_vector<_Ty, _Ax>::_Copy_array( void* _Dst, const void* _Src, size_type _N ) {
     _Internal_loop_guide _Loop(_N, _Dst); _Loop._Copy(_Src);
 }
 
 template<typename _Ty, class _Ax>
-void concurrent_vector<_Ty, _Ax>::_Assign_array( void* _Dst, const void* _Src, size_type _N )
+void __cdecl concurrent_vector<_Ty, _Ax>::_Assign_array( void* _Dst, const void* _Src, size_type _N )
 {
     _Internal_loop_guide _Loop(_N, _Dst); _Loop._Assign(_Src);
 }
 
 template<typename _Ty, class _Ax>
-void concurrent_vector<_Ty, _Ax>::_Destroy_array( void* _Begin, size_type _N ) 
+void __cdecl concurrent_vector<_Ty, _Ax>::_Destroy_array( void* _Begin, size_type _N ) 
 {
     _Ty* _Array = static_cast<_Ty*>(_Begin);
     for( size_type _J=_N; _J>0; --_J )

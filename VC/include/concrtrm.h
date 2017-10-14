@@ -1225,7 +1225,7 @@ namespace Concurrency
     /// </remarks>
     /// <seealso cref="IResourceManager::OSVersion Enumeration"/>
     /**/
-    _CRTIMP IResourceManager* CreateResourceManager();
+    _CRTIMP IResourceManager* __cdecl CreateResourceManager();
 
     /// <summary>
     ///     Returns the operating system version.
@@ -1239,7 +1239,7 @@ namespace Concurrency
     /// </remarks>
     /// <seealso cref="IResourceManager::OSVersion Enumeration"/>
     /**/
-    _CRTIMP IResourceManager::OSVersion GetOSVersion();
+    _CRTIMP IResourceManager::OSVersion __cdecl GetOSVersion();
 
     /// <summary>
     ///     Returns a unique identifier that can be assigned to a scheduler that implements the <c>IScheduler</c> interface.
@@ -1252,7 +1252,7 @@ namespace Concurrency
     ///     offered by the Resource Manager.
     /// </remarks>
     /**/
-    _CRTIMP unsigned int GetSchedulerId();
+    _CRTIMP unsigned int __cdecl GetSchedulerId();
 
     /// <summary>
     ///     Returns a unique identifier that can be assigned to an execution context that implements the <c>IExecutionContext</c> interface.
@@ -1265,7 +1265,7 @@ namespace Concurrency
     ///     of the methods offered by the Resource Manager.
     /// </remarks>
     /**/
-    _CRTIMP unsigned int GetExecutionContextId();
+    _CRTIMP unsigned int __cdecl GetExecutionContextId();
 
     /// <summary> 
     ///     Returns the number of hardware threads on the underlying system.
@@ -1279,7 +1279,7 @@ namespace Concurrency
     /// </remarks>
     /// <seealso cref="IResourceManager::OSVersion Enumeration"/>
     /**/
-    _CRTIMP unsigned int GetProcessorCount();
+    _CRTIMP unsigned int __cdecl GetProcessorCount();
 
     /// <summary>
     ///     Returns the number of NUMA nodes or processor packages on the underlying system.
@@ -1294,7 +1294,7 @@ namespace Concurrency
     /// </remarks>
     /// <seealso cref="IResourceManager::OSVersion Enumeration"/>
     /**/
-    _CRTIMP unsigned int GetProcessorNodeCount();
+    _CRTIMP unsigned int __cdecl GetProcessorNodeCount();
 }
 
 #pragma pack(pop)

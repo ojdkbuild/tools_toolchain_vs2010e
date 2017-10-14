@@ -3,7 +3,7 @@
 *
 * Copyright (c) Microsoft Corporation.  All rights reserved.
 * Microsoft would like to acknowledge that this concurrency data structure implementation
-* is based on Intel’s implementation in its Threading Building Blocks ("Intel Material").
+* is based on Intel's implementation in its Threading Building Blocks ("Intel Material").
 * 
 * ==--==
 * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
@@ -370,7 +370,10 @@ class concurrent_queue: public ::Concurrency::details::_Concurrent_queue_base_v4
     {
         _Ty& _From = _Get_ref(_Src,_Index);
         _Destroyer _D(_From);
-        *static_cast<_Ty*>(_Dst) = _From;
+        if (_Dst != NULL)
+        {
+            *static_cast<_Ty*>(_Dst) = _From;
+        }
     }
 
     /*overide*/ virtual _Page *_Allocate_page()
@@ -726,8 +729,7 @@ void concurrent_queue<_Ty,_Ax>::clear()
 {
     while( !empty() )
     {
-        char _Buf[sizeof(_Ty)];
-        if (!_Internal_pop_if_present(reinterpret_cast<_Ty*>(_Buf)))
+        if (!_Internal_pop_if_present(NULL))
         {
             _ASSERTE(empty());
             break;

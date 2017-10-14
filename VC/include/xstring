@@ -730,8 +730,7 @@ public:
 			this->_Mysize = _Right._Mysize;
 			this->_Myres = _Right._Myres;
 
-			_Right._Mysize = 0;
-			_Right._Myres = 0;
+			_Right._Tidy();
 			}
 		return (*this);
 		}

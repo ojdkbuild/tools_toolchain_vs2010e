@@ -7,7 +7,6 @@
 *       Support CRT debugging features.
 *
 *       [Public]
-*
 ****/
 
 #pragma once

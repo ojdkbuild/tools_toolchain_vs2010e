@@ -7,7 +7,6 @@
 *       User include file for exception handling.
 *
 *       [Public]
-*
 ****/
 
 #pragma once

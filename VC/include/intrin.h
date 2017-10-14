@@ -21,7 +21,12 @@
 
 #if !defined(_M_CEE_PURE)
 
+#if defined(_M_IX86) || defined(_M_X64)
 #include <immintrin.h>
+#include <ammintrin.h>
+#elif defined(_M_IA64)
+#include <emmintrin.h>
+#endif /* M_IX86) || _M_X64 */
 
 #if defined(_M_IX86)
 #include <mm3dnow.h>

@@ -8,7 +8,7 @@
 ***
 ****/
 
-/*
+/***
  *  Definition of a C++ class interface to Willamette New Instruction intrinsics.
  *
  *	File name : dvec.h  class definitions
@@ -18,7 +18,7 @@
  *	Facilitates an easy transition to compiler intrinsics
  *	or assembly language.
  *
- */
+ ***/
 
 #ifndef _DVEC_H_INCLUDED
 #define _DVEC_H_INCLUDED

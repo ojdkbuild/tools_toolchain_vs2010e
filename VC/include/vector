@@ -1210,7 +1210,7 @@ public:
 			_Destroy(_Ptr, this->_Mylast);
 			this->_Mylast = _Ptr;
 			}
-		return (_First);
+		return (_Make_iter(_First));
 		}
 
 	void clear()

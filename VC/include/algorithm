@@ -5471,9 +5471,10 @@ template<class _RanIt,
 template<class _FwdIt> inline
 	_FwdIt _Is_sorted_until(_FwdIt _First, _FwdIt _Last)
 	{	// find extent of range that is ordered by operator<
-	for (_FwdIt _Next = _First; _First != _Last && ++_Next != _Last; ++_First)
-		if (_DEBUG_LT(*_Next, *_First))
-			return (_First);
+	if (_First != _Last)
+		for (_FwdIt _Next = _First; ++_Next != _Last; ++_First)
+			if (_DEBUG_LT(*_Next, *_First))
+				return (_Next);
 	return (_Last);
 	}
 
@@ -5496,9 +5497,10 @@ template<class _FwdIt,
 	class _Pr> inline
 	_FwdIt _Is_sorted_until(_FwdIt _First, _FwdIt _Last, _Pr _Pred)
 	{	// find extent of range that is ordered by predicate
-	for (_FwdIt _Next = _First; _First != _Last && ++_Next != _Last; ++_First)
-		if (_DEBUG_LT_PRED(_Pred, *_Next, *_First))
-			return (_First);
+	if (_First != _Last)
+		for (_FwdIt _Next = _First; ++_Next != _Last; ++_First)
+			if (_DEBUG_LT_PRED(_Pred, *_Next, *_First))
+				return (_Next);
 	return (_Last);
 	}
 
